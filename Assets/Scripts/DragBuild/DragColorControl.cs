@@ -7,6 +7,7 @@ public class DragColorControl : MonoBehaviour
 {
     [SerializeField] private Color Green;
     [SerializeField] private Color Red;
+
     [SerializeField] private Image BuildImage;
 
     private void Start()
@@ -19,12 +20,16 @@ public class DragColorControl : MonoBehaviour
         //BuildImage.color
         if (_Color == WhichColor.GreenOne)
             BuildImage.color = Green;
-        else
+        else if(_Color == WhichColor.RedOne)
             BuildImage.color = Red;
+        else
+            BuildImage.color = Color.white;
+
     }
     public enum WhichColor
     {
         GreenOne,
-        RedOne
+        RedOne,
+        Default
     }
 }

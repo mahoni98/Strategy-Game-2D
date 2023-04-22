@@ -1,30 +1,75 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using MyHelper;
 public class TriggerControl : MonoBehaviour
 {
     [SerializeField] private DragColorControl _DragColorControl;
 
-    private bool AnyTriggerBusyGrid = false; // does it have any contact with the full grid
-
+    [SerializeField] private bool _AnyTriggerBusyGrid = false; // does it have any contact with the full grid
+    public List<GridElement> GridElements;
+    Helper h = new Helper();
+    public bool AnyTriggerBusyGrid
+    {
+        get { return _AnyTriggerBusyGrid; }
+        set { _AnyTriggerBusyGrid = value; }
+    }
     private void Start()
     {
-        _DragColorControl = GetComponent<DragColorControl>();
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        GridElement Grid = collision.GetComponent<GridElement>();
-        if (Grid.ThereAreSomething == false&& AnyTriggerBusyGrid ==false)
+        if (transform.parent.GetComponent<DragColorControl>() != null)
         {
-            //Grid.ThereAreSomething = true;
-            _DragColorControl.SetColor(DragColorControl.WhichColor.GreenOne);
+            _DragColorControl = transform.parent.GetComponent<DragColorControl>();
         }
         else
         {
-            AnyTriggerBusyGrid = true;
+            _DragColorControl = GetComponent<DragColorControl>();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GridElement Grid = collision.GetComponent<GridElement>();
+        if (Grid.ThereAreSomething == false  /*&& _AnyTriggerBusyGrid == false*/)
+        {
+            collision.GetComponent<Image>().color = Color.black;
+            //_DragColorControl.SetColor(DragColorControl.WhichColor.GreenOne);
+            Grid.EnterBuild(name);
+            h.GridElemetListControl(GridElements, Grid);
+        }
+        //else if (Grid.PlacedBuildName == name)
+        //{
+        //    collision.GetComponent<Image>().color = Color.black;
+        //    _DragColorControl.SetColor(DragColorControl.WhichColor.GreenOne);
+        //    Grid.EnterBuild(name);
+        //}
+        else
+        {
+            _AnyTriggerBusyGrid = true;
             _DragColorControl.SetColor(DragColorControl.WhichColor.RedOne);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        GridElement Grid = collision.GetComponent<GridElement>();
+        if (Grid != null)
+        {
+            if (Grid.ExitBuild(name))
+            {
+                AnyTriggerBusyGrid = false;
+                //_DragColorControl.SetColor(DragColorControl.WhichColor.Default);
+                collision.GetComponent<Image>().color = Color.gray;
+                h.GridElemetListControl(GridElements, Grid);
+            }
+        }
+    }
+    public void MarkGrid()
+    {
+        AnyTriggerBusyGrid =false;
+        foreach (var item in GridElements)
+        {
+            item.ThereAreSomething = true;
+            item.PlacedBuildName = name;
         }
     }
 }

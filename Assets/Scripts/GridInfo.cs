@@ -32,112 +32,100 @@ public class GridInfo : SingletonManager<GridInfo>
         }
     }
 
-    public List<GridElement> FindDamageZoneHorizontal(string Name, bool Open, Collider2D collision, int DamageValue)
-    {
-        int CurrentSatir = 0;
-        List<GridElement> list = new List<GridElement>();
-        foreach (GridItem item in gridItems)
-        {
-            if (Name == item.Name)
-            {
-                CurrentSatir = item.Satir;
-            }
-        }
-        foreach (GridItem item2 in gridItems)
-        {
-            if (item2.Satir == CurrentSatir)
-            {
-                SetRedZone(Open, item2, collision, DamageValue);
-                list.Add(item2.gridElementScript);
-            }
-        }
-        return list;
-    }
-    public List<GridElement> FindDamageZoneVertical(string Name, bool Open, Collider2D collision, int DamageValue)
-    {
-        int currenSutun = 0;
-        List<GridElement> list = new List<GridElement>();
+    //public List<GridElement> FindDamageZoneHorizontal(string Name, bool Open, Collider2D collision, int DamageValue)
+    //{
+    //    int CurrentSatir = 0;
+    //    List<GridElement> list = new List<GridElement>();
+    //    foreach (GridItem item in gridItems)
+    //    {
+    //        if (Name == item.Name)
+    //        {
+    //            CurrentSatir = item.Satir;
+    //        }
+    //    }
+    //    foreach (GridItem item2 in gridItems)
+    //    {
+    //        if (item2.Satir == CurrentSatir)
+    //        {
+    //            SetRedZone(Open, item2, collision, DamageValue);
+    //            list.Add(item2.gridElementScript);
+    //        }
+    //    }
+    //    return list;
+    //}
+    //public List<GridElement> FindDamageZoneVertical(string Name, bool Open, Collider2D collision, int DamageValue)
+    //{
+    //    int currenSutun = 0;
+    //    List<GridElement> list = new List<GridElement>();
 
-        foreach (GridItem item in gridItems)
-        {
-            if (Name == item.Name)
-            {
-                currenSutun = item.Sutun;
-            }
-        }
-        foreach (GridItem item2 in gridItems)
-        {
-            if (item2.Sutun == currenSutun)
-            {
-                SetRedZone(Open, item2, collision, DamageValue);
-            }
-        }
-        return list;
-    }
-    public List<GridElement> FindDamageZoneEverywhere(string Name, bool Open, Collider2D collision, int DamageValue)
-    {
-        int CurrentSatir = 0;
-        int currenSutun = 0;
-        List<GridElement> list = new List<GridElement>();
+    //    foreach (GridItem item in gridItems)
+    //    {
+    //        if (Name == item.Name)
+    //        {
+    //            currenSutun = item.Sutun;
+    //        }
+    //    }
+    //    foreach (GridItem item2 in gridItems)
+    //    {
+    //        if (item2.Sutun == currenSutun)
+    //        {
+    //            SetRedZone(Open, item2, collision, DamageValue);
+    //        }
+    //    }
+    //    return list;
+    //}
+    //public List<GridElement> FindDamageZoneEverywhere(string Name, bool Open, Collider2D collision, int DamageValue)
+    //{
+    //    int CurrentSatir = 0;
+    //    int currenSutun = 0;
+    //    List<GridElement> list = new List<GridElement>();
 
 
-        foreach (GridItem item in gridItems)
-        {
-            if (Name == item.Name)
-            {
-                currenSutun = item.Sutun;
-                CurrentSatir = item.Satir;
-                SetRedZone(Open, item, collision, DamageValue);
+    //    foreach (GridItem item in gridItems)
+    //    {
+    //        if (Name == item.Name)
+    //        {
+    //            currenSutun = item.Sutun;
+    //            CurrentSatir = item.Satir;
+    //            SetRedZone(Open, item, collision, DamageValue);
 
-                list.Add(item.gridElementScript);
-            }
-        }
-        foreach (GridItem item2 in gridItems)
-        {
-            if (item2.Satir == CurrentSatir && item2.Sutun - 1 == currenSutun)
-            {
-                SetRedZone(Open, item2, collision, DamageValue);
+    //            list.Add(item.gridElementScript);
+    //        }
+    //    }
+    //    foreach (GridItem item2 in gridItems)
+    //    {
+    //        if (item2.Satir == CurrentSatir && item2.Sutun - 1 == currenSutun)
+    //        {
+    //            SetRedZone(Open, item2, collision, DamageValue);
 
-                list.Add(item2.gridElementScript);
+    //            list.Add(item2.gridElementScript);
 
-            }
-            else if (item2.Satir == CurrentSatir && item2.Sutun + 1 == currenSutun)
-            {
-                SetRedZone(Open, item2, collision, DamageValue);
+    //        }
+    //        else if (item2.Satir == CurrentSatir && item2.Sutun + 1 == currenSutun)
+    //        {
+    //            SetRedZone(Open, item2, collision, DamageValue);
 
-                list.Add(item2.gridElementScript);
+    //            list.Add(item2.gridElementScript);
 
-            }
-            else if (item2.Satir - 1 == CurrentSatir && item2.Sutun == currenSutun)
-            {
-                SetRedZone(Open, item2, collision, DamageValue);
+    //        }
+    //        else if (item2.Satir - 1 == CurrentSatir && item2.Sutun == currenSutun)
+    //        {
+    //            SetRedZone(Open, item2, collision, DamageValue);
 
-                list.Add(item2.gridElementScript);
-            }
-            else if (item2.Satir + 1 == CurrentSatir && item2.Sutun == currenSutun)
-            {
+    //            list.Add(item2.gridElementScript);
+    //        }
+    //        else if (item2.Satir + 1 == CurrentSatir && item2.Sutun == currenSutun)
+    //        {
 
-                SetRedZone(Open, item2, collision, DamageValue);
+    //            SetRedZone(Open, item2, collision, DamageValue);
 
-                list.Add(item2.gridElementScript);
-            }
-        }
-        return list;
-    }
+    //            list.Add(item2.gridElementScript);
+    //        }
+    //    }
+    //    return list;
+    //}
 
-    void SetRedZone(bool Open, GridItem item, Collider2D collision, int DamageValue)
-    {
-        if (Open)
-        {
-            item.gridElementScript.TriggerCounter(collision, DamageValue);
-            item.gridElementScript.SetRedImageOpacity();
-        }
-        else
-        {
-            item.gridElementScript.TriggerNegativeCounter(collision, DamageValue);
-            item.gridElementScript.SetRedImageOpacity();
-        }
-    }
+
 
     //public EnemyGridInfo FindWillGoPosition(string Name)
     //{
@@ -194,7 +182,7 @@ public class GridInfo : SingletonManager<GridInfo>
     //    }
     //    return _EnemyGridInfo;
     //}
-    public Transform GetClosestEnemy(Transform DiceTransform)
+    public Transform GetClosestGrid(Transform DiceTransform)
     {
         Transform tMin = null;
         float minDist = Mathf.Infinity;
@@ -212,16 +200,6 @@ public class GridInfo : SingletonManager<GridInfo>
             }
         }
         return tMin;
-    }
-
-    public class EnemyGridInfo
-    {
-        public GridElement _GridElement;
-        public GridElement WillGoGrid;
-        public bool Continue;
-        public int DamageValue;
-        public bool EnemyAttack;
-
     }
 
     [Serializable]
