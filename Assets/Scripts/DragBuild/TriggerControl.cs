@@ -33,8 +33,7 @@ public class TriggerControl : MonoBehaviour
         if (Grid.ThereAreSomething == false  /*&& _AnyTriggerBusyGrid == false*/)
         {
             collision.GetComponent<Image>().color = Color.black;
-            //_DragColorControl.SetColor(DragColorControl.WhichColor.GreenOne);
-            Grid.EnterBuild(name);
+            Grid.EnterBuild(transform.parent.name);
             h.GridElemetListControl(GridElements, Grid);
         }
         //else if (Grid.PlacedBuildName == name)
@@ -45,7 +44,7 @@ public class TriggerControl : MonoBehaviour
         //}
         else
         {
-            _AnyTriggerBusyGrid = true;
+            //_AnyTriggerBusyGrid = true;
             _DragColorControl.SetColor(DragColorControl.WhichColor.RedOne);
         }
     }
@@ -54,10 +53,9 @@ public class TriggerControl : MonoBehaviour
         GridElement Grid = collision.GetComponent<GridElement>();
         if (Grid != null)
         {
-            if (Grid.ExitBuild(name))
+            if (Grid.ExitBuild(transform.parent.name))
             {
                 AnyTriggerBusyGrid = false;
-                //_DragColorControl.SetColor(DragColorControl.WhichColor.Default);
                 collision.GetComponent<Image>().color = Color.gray;
                 h.GridElemetListControl(GridElements, Grid);
             }
@@ -65,11 +63,11 @@ public class TriggerControl : MonoBehaviour
     }
     public void MarkGrid()
     {
-        AnyTriggerBusyGrid =false;
+        //AnyTriggerBusyGrid =false;
         foreach (var item in GridElements)
         {
             item.ThereAreSomething = true;
-            item.PlacedBuildName = name;
+            item.PlacedBuildName = transform.parent.name;
         }
     }
 }

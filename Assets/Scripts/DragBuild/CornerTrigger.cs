@@ -15,12 +15,15 @@ public class CornerTrigger : MonoBehaviour, IBuild
     private void OnTriggerStay2D(Collider2D collision)
     {
         GridElement _GridElement = collision.GetComponent<GridElement>();
-        if (_GridElement != null && _GridElement.ThereAreSomething == false)
+        if (_GridElement != null)
         {
-            GridEmpt = true;
-            return;
+            if (_GridElement.ThereAreSomething == false)
+            {
+                GridEmpt = true;
+                return;
+            }
+            GridEmpt = false;
         }
-        GridEmpt = false;
     }
     public void EnabledTrigger()
     {

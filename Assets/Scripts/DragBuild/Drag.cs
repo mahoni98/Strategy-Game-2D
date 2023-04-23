@@ -14,8 +14,7 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private Transform Parent;
 
 
-    public float OffsetX;
-    public float OffsetY;
+   
 
 
     private void Start()

@@ -6,15 +6,31 @@ using UnityEngine.UI;
 
 public class ParentTriggerControl : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBuild
 {
-    [SerializeField] private CornerTrigger[] CornerTriggers;
+    [Header("Scripts")]
+    [SerializeField] private CornerTrigger[] _CornerTriggers;
     [SerializeField] private DragColorControl _DragColorControl;
-    [SerializeField] private bool CanPlace;
+    [SerializeField] private TriggerControl _TriggerControl;
 
+
+    [Header("Unity Variable")]
+    [SerializeField] private Transform BuildParent;
+    [SerializeField] private Transform Build;
+
+
+    [Header("Basic Variable")]
+    [SerializeField] private bool CanPlace;
+    [SerializeField] public float OffsetX;
+    [SerializeField] public float OffsetY;
 
     private void Start()
     {
-        CornerTriggers = transform.GetComponentsInChildren<CornerTrigger>();
+        _CornerTriggers = transform.GetComponentsInChildren<CornerTrigger>();
         _DragColorControl = GetComponent<DragColorControl>();
+        _TriggerControl = GetComponent<TriggerControl>();
+
+        Build = transform;
+        BuildParent = transform.parent;
+
         DisabledTrigger();
     }
     public void OnPointerDown(PointerEventData eventData)
@@ -24,7 +40,7 @@ public class ParentTriggerControl : MonoBehaviour, IPointerDownHandler, IPointer
     }
     public void CheckTrigger()
     {
-        foreach (var item in CornerTriggers)
+        foreach (var item in _CornerTriggers)
         {
             if (item.GridEmpt == false)
             {
@@ -42,7 +58,7 @@ public class ParentTriggerControl : MonoBehaviour, IPointerDownHandler, IPointer
 
     public void EnabledTrigger()
     {
-        foreach (var item in CornerTriggers)
+        foreach (var item in _CornerTriggers)
         {
             item.EnabledTrigger();
         }
@@ -50,16 +66,22 @@ public class ParentTriggerControl : MonoBehaviour, IPointerDownHandler, IPointer
 
     public void DisabledTrigger()
     {
-        foreach (var item in CornerTriggers)
+        foreach (var item in _CornerTriggers)
         {
             item.DisabledTrigger();
         }
+        CancelInvoke("CheckTrigger");
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        //DisabledTrigger();
-        BuildSetPos.Instance.SetPosition(Parent, GridInfo.Instance.GetClosestGrid(DragManager.Instance.Build), _TriggerControl, OffsetX, OffsetY);
+
+        if (CanPlace)
+        {
+            DisabledTrigger();
+            _DragColorControl.SetColor(DragColorControl.WhichColor.Default);
+            BuildSetPos.Instance.SetPosition(Build, BuildParent, GridInfo.Instance.GetClosestGrid(DragManager.Instance.Build), _TriggerControl, OffsetX, OffsetY);
+        }
+        //BuildSetPos.Instance.SetPosition(Build, BuildParent, GridInfo.Instance.GetClosestGrid(DragManager.Instance.Build), _TriggerControl, OffsetX, OffsetY);
     }
-    //public void EnableDetect
 }
