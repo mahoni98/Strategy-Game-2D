@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-public class Drag : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class Drag : MonoBehaviour, IPointerDownHandler
 {
 
     [SerializeField] private Canvas Canvas;
@@ -14,7 +14,7 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private Transform Parent;
 
 
-   
+
 
 
     private void Start()
@@ -23,23 +23,15 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        //if (DragManager.Instance.Entry)
-        //{
-        //    DragManager.Instance.Entry = false;
-        //    DragManager.Instance.Build = CornerPos;
-        //}
         DragManager.Instance.Build = CornerPos;
-    }
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        //DragManager.Instance.Entry = true;
-    }
 
-
+        var inter = Parent.GetComponent<IProduct>();
+        if (inter != null)
+            GetProductInfo.Instance.SetInfoToPanel(Parent.GetComponent<Product>());
+    }
     public void DragHandler(BaseEventData data)
     {
         PointerEventData PointerData = (PointerEventData)data;
-
         Vector2 Position;
         RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)Canvas.transform, PointerData.position, Canvas.worldCamera, out Position);
         transform.position = Vector2.Lerp(transform.position, Canvas.transform.TransformPoint(Position), Sensivity * Time.deltaTime);

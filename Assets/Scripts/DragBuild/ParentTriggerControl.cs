@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ParentTriggerControl : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBuild
+public class ParentTriggerControl : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPortable
 {
     [Header("Scripts")]
     [SerializeField] private CornerTrigger[] _CornerTriggers;
@@ -75,7 +75,6 @@ public class ParentTriggerControl : MonoBehaviour, IPointerDownHandler, IPointer
 
     public void OnPointerUp(PointerEventData eventData)
     {
-
         if (CanPlace)
         {
             DisabledTrigger();

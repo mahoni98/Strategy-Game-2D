@@ -30,7 +30,7 @@ public class TriggerControl : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GridElement Grid = collision.GetComponent<GridElement>();
-        if (Grid.ThereAreSomething == false  /*&& _AnyTriggerBusyGrid == false*/)
+        if (Grid != null && Grid.ThereAreSomething == false  /*&& _AnyTriggerBusyGrid == false*/)
         {
             collision.GetComponent<Image>().color = Color.black;
             Grid.EnterBuild(transform.parent.name);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CornerTrigger : MonoBehaviour, IBuild
+public class CornerTrigger : MonoBehaviour, IPortable
 {
     public bool GridEmpt = true;
     private BoxCollider2D Collider;
