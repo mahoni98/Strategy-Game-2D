@@ -4,9 +4,9 @@ public class Soldier : MonoBehaviour
     public string Name;
     public string Info;
     public Sprite Image;
-    public float AttackSpeed;
+    public float AttackRateTime;
     public float MoveSpeed;
-
+    public bool ActiveAttack;
     //public float ProductionCost;
     //public float RespawnTime;
     public virtual void Attack(/*GameObject target*/)

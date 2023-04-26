@@ -93,8 +93,10 @@ MonoBehaviour:
   Name: 
   Info: 
   Image: {fileID: 0}
-  AttackSpeed: 0
+  AttackRateTime: 1
   MoveSpeed: 0
+  ActiveAttack: 0
+  ArrowPool: {fileID: 0}
 --- !u!114 &2528251672078238349
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,8 +5,8 @@ using UnityEngine;
 public class SoldierAttack : Soldier
 {
 
-    public override void Attack()
+    private void Update()
     {
-
+       
     }
 }
