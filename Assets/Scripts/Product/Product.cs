@@ -10,6 +10,14 @@ public class Product : MonoBehaviour
     public string ProductInfo;
     public Sprite ProductImage;
     public bool CanProduce;
+    //public Transform Position;
+    public Type ProductType;
+    public enum Type
+    {
+        Barracks, 
+        PowerPlant,
+
+    }
 
     [Header("Unit Produced")]
     public string UnitName;

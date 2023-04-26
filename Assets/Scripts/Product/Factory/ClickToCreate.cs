@@ -8,6 +8,8 @@ public class ClickToCreate : MonoBehaviour
     public Transform _GridElement;
     public ConCreteFactoryBarrack _ConCreteFactoryBarrack;
     public ConCreteFactoryPowerPlant _ConCreteFactoryPowerPlant;
+    public ConCreteFactorySoldier _ConCreteFactorySoldier;
+
     public void GetProductAtClick(Button Btn)
     {
         // check click with raycast
@@ -19,6 +21,9 @@ public class ClickToCreate : MonoBehaviour
                 break;
             case ProductUýItem.Type.PowerPlant:
                 _ConCreteFactoryPowerPlant.GetProduct(_GridElement);
+                break;
+            case ProductUýItem.Type.Soldier:
+                _ConCreteFactorySoldier.GetProduct(_GridElement);
                 break;
             default:
                 break;

@@ -353,6 +353,8 @@ MonoBehaviour:
   ProductInfo: 'power plants to the energy point of the city '
   ProductImage: {fileID: 21300000, guid: db219c0d8de00df4d9f62f7125988b46, type: 3}
   CanProduce: 0
+  Position: {fileID: 272112396258390330}
+  ProductType: 1
   UnitName: 
   UnitInfo: 
   UnitProducedImage: {fileID: 0}

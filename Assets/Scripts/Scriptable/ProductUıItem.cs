@@ -11,6 +11,7 @@ public class ProductUýItem : ScriptableObject
     public enum Type
     {
         Barracks,
-        PowerPlant
+        PowerPlant,
+        Soldier
     }
 }

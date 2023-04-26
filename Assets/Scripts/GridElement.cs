@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
-public class GridElement : MonoBehaviour
+public class GridElement : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private bool _ThereAreSomething = false;
     [SerializeField] private string _PlacedBuildName;
@@ -24,10 +24,15 @@ public class GridElement : MonoBehaviour
     }
     public void EnterBuild(string Name)
     {
-        WhenGridAction( Name);
+        WhenGridAction(Name);
     }
     public void WhenGridAction(string Name)
     {
         _PlacedBuildName = Name;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        SoldierMoveManager.Instance.BeMove(transform);
     }
 }
