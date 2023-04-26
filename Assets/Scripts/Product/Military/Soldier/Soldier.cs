@@ -5,8 +5,11 @@ public class Soldier : MonoBehaviour
     public string Info;
     public Sprite Image;
     public float AttackRateTime;
+    public float AttackDistance;
+    public float Damage;
     public float MoveSpeed;
     public bool ActiveAttack;
+    public Transform TargetForAttack;
     //public float ProductionCost;
     //public float RespawnTime;
     public virtual void Attack(/*GameObject target*/)

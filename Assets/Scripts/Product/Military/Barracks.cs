@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
-public class Barracks : MilitaryProduct, IProduct
+using UnityEngine.EventSystems;
+public class Barracks : MilitaryProduct, IProduct, IPointerDownHandler
 {
     public Transform RandomPos;
     private void Start()
@@ -25,5 +25,8 @@ public class Barracks : MilitaryProduct, IProduct
         throw new NotImplementedException();
     }
 
-   
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        SoldierMoveManager.Instance.MoveForAttack(transform);
+    }
 }

@@ -33,6 +33,8 @@ public class GridElement : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        SoldierMoveManager.Instance.BeMove(transform);
+        if (ThereAreSomething == false)
+            SoldierMoveManager.Instance.BeMove(transform);
     }
+
 }

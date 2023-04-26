@@ -25,9 +25,9 @@ public class Arrow : MonoBehaviour
         //}
         //transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
-    public void GoTarget(float AttackSpeed)
+    public void GoTarget(Transform Target,float AttackSpeed)
     {
-        Target = GameObject.FindGameObjectWithTag("Target").transform;
+        //Target = GameObject.FindGameObjectWithTag("Target").transform;
         transform.DOJump(Target.position,1f,1, AttackSpeed).SetEase(AnimType).OnComplete(OnHitTarget);
     }
     private void OnHitTarget()
