@@ -2,6 +2,6 @@
 public interface IProduct
 {
     void Die();
-    void Damage();
+    void Damage(int value);
 
 }

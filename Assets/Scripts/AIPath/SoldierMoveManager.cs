@@ -10,14 +10,16 @@ public class SoldierMoveManager : SingletonManager<SoldierMoveManager>
 
     private void Update()
     {
-      
+
     }
 
 
     // ulaþtýðýnda currentsoldier = null yapcaz.
     public void BeMove(Transform GridTransform)
     {
-        if (SoldierSelected)
+        Soldier SoldierBase = CurrentSoldierAI.Soldier;
+
+        if (SoldierSelected && SoldierBase.SoldierState != Soldier.State.Attack)
         {
             Transform Target = _CreateTarget.Create();
             Target.position = GridTransform.position;
@@ -31,7 +33,7 @@ public class SoldierMoveManager : SingletonManager<SoldierMoveManager>
     {
         if (SoldierSelected)
         {
-            Soldier SoldierBase = CurrentSoldierAI.GetComponent<Soldier>();
+            Soldier SoldierBase = CurrentSoldierAI.Soldier;
             Transform Target = _CreateTarget.Create();
             Target.position = TransforForAttack.position;
             CurrentSoldierAI.Move(Target);
@@ -45,7 +47,7 @@ public class SoldierMoveManager : SingletonManager<SoldierMoveManager>
     {
         if (!SoldierSelected)
         {
-          
+
         }
         CurrentSoldierAI = Soldier;
         SoldierSelected = true;

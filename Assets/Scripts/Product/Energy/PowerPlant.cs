@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 public class PowerPlant : EnergyProduct, IProduct
 {
-    public void Damage()
+
+    public void Damage(int value)
     {
-        throw new NotImplementedException();
+        HealthValue -= value;
+        if (HealthValue <= 0)
+        {
+            Die();   
+        }
     }
 
     public void Die()
     {
-        throw new NotImplementedException();
+        Destroy(gameObject);
     }
 }

@@ -6,27 +6,21 @@ using System.Threading.Tasks;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-public class Barracks : MilitaryProduct, IProduct, IPointerDownHandler
+public class Barracks : MilitaryProduct, IProduct
 {
     public Transform RandomPos;
-    private void Start()
-    {
-
-    }
     
     public void Die()
     {
-        throw new NotImplementedException();
+        Destroy(gameObject);
     }
 
-    public void Damage()
+    public void Damage(int value)
     {
-        throw new NotImplementedException();
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        SoldierMoveManager.Instance.MoveForAttack(transform);
+        HealthValue -= value;
+        if (HealthValue <= 0)
+        {
+            Die();
+        }
     }
 }

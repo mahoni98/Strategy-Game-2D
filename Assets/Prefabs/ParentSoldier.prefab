@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _AIPath: {fileID: 5204676020175280486}
   _AIDestinationSetter: {fileID: 5204676020175280487}
+  Soldier: {fileID: 3816922739135246365}
 --- !u!222 &5204676020175280485
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -242,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 3800793069018033626, guid: cec4f22dac2724c4c9d0f5057b9a0743, type: 3}
-  size: 3
+  size: 2
   BornTransform: {fileID: 5204676020175280507}
 --- !u!1001 &5204676020031711322
 PrefabInstance:
@@ -255,6 +256,14 @@ PrefabInstance:
       propertyPath: ArrowPool
       value: 
       objectReference: {fileID: 5204676020557378713}
+    - target: {fileID: 8989983384633579591, guid: 1ed103af804beb945af1b6ea16940c6f, type: 3}
+      propertyPath: _AIControl
+      value: 
+      objectReference: {fileID: 5204676020175280484}
+    - target: {fileID: 8989983384633579591, guid: 1ed103af804beb945af1b6ea16940c6f, type: 3}
+      propertyPath: AttackDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8989983384633579610, guid: 1ed103af804beb945af1b6ea16940c6f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -412,5 +421,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16c4d0fc96f22df4696ae52c88782cf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3816922739135246365 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8989983384633579591, guid: 1ed103af804beb945af1b6ea16940c6f, type: 3}
+  m_PrefabInstance: {fileID: 5204676020031711322}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3816922739135246337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af0ff1637fc971d45be7ac0f65506229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -6,7 +6,7 @@ using DG.Tweening;
 public class Arrow : MonoBehaviour
 {
     //public GameObject Prefabs;
-    public Transform Target;
+    //public Transform Target;
     //public float speed = 10f;
     //public float duration = 1f;
     public Ease AnimType;
@@ -28,10 +28,18 @@ public class Arrow : MonoBehaviour
     public void GoTarget(Transform Target,float AttackSpeed)
     {
         //Target = GameObject.FindGameObjectWithTag("Target").transform;
-        transform.DOJump(Target.position,1f,1, AttackSpeed).SetEase(AnimType).OnComplete(OnHitTarget);
+        transform.DOJump(Target.position,1f,1, AttackSpeed).SetEase(AnimType).OnComplete(()=>OnHitTarget(Target));
     }
-    private void OnHitTarget()
+    private void OnHitTarget(Transform Target)
     {
         gameObject.SetActive(false);
+        try
+        {
+            Target.parent.GetComponent<IProduct>().Damage(10); // bu transforma barrack ekle scriptolarak 
+        }
+        catch (System.Exception ex)
+        {
+            
+        }
     }
 }

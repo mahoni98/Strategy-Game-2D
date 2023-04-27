@@ -18,6 +18,7 @@ public class ObjectPool : MonoBehaviour
         {
             GameObject obj = Instantiate(prefab, FindObjectOfType<Canvas>().transform);
             obj.transform.localPosition = BornTransform.localPosition;
+            obj.transform.parent = BornTransform;
             obj.SetActive(false);
             objectList.Add(obj);
         }
@@ -33,9 +34,6 @@ public class ObjectPool : MonoBehaviour
                 return obj;
             }
         }
-
-        GameObject newObj = Instantiate(prefab, transform);
-        objectList.Add(newObj);
-        return newObj;
+        return null;
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class Product : MonoBehaviour
 {
+
     [Header("Product")]
     public string Name;
     public int HealthValue;
@@ -10,13 +11,11 @@ public class Product : MonoBehaviour
     public string ProductInfo;
     public Sprite ProductImage;
     public bool CanProduce;
-    //public Transform Position;
     public Type ProductType;
     public enum Type
     {
         Barracks, 
         PowerPlant,
-
     }
 
     [Header("Unit Produced")]

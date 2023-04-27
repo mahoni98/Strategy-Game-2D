@@ -353,7 +353,6 @@ MonoBehaviour:
   ProductInfo: 'power plants to the energy point of the city '
   ProductImage: {fileID: 21300000, guid: db219c0d8de00df4d9f62f7125988b46, type: 3}
   CanProduce: 0
-  Position: {fileID: 272112396258390330}
   ProductType: 1
   UnitName: 
   UnitInfo: 
@@ -377,6 +376,7 @@ GameObject:
   - component: {fileID: 272112396650481076}
   - component: {fileID: 272112396650481079}
   - component: {fileID: 272112396650481078}
+  - component: {fileID: 4555808127724267410}
   m_Layer: 5
   m_Name: Power Plant
   m_TagString: Untagged
@@ -588,6 +588,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &4555808127724267410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272112396650481080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24aa212a4e293c449b737ec014ff1df4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &272112396691428551
 GameObject:
   m_ObjectHideFlags: 0

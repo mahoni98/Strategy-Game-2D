@@ -1,6 +1,7 @@
 ﻿
 using UnityEngine;
 using DG.Tweening;
+using System.Collections;
 public class Soldier1 : Soldier, IProduct
 {
     [SerializeField] private AIControl _AIControl;
@@ -8,48 +9,75 @@ public class Soldier1 : Soldier, IProduct
 
     private void Start()
     {
-        //ActiveAttack = true;
-        //InvokeRepeating("Attack", AttackRateTime, AttackRateTime);
-        //Attack();
+        UpdateState(State.Idle);
+        SetAIValues();
         GoToEmptyGrid();
     }
     private void Update()
     {
-        if (_AIControl._AIPath.reachedDestination == false&&TargetForAttack!=null)
+        if (_AIControl._AIPath.reachedDestination == true /*&& TargetForAttack != null*/ && JustOneEntry)
         {
-            ActiveAttack = true;
-            Attack();
+            UpdateState(State.Attack);
         }
     }
-    
-    public  override  void Attack()
+    public void UpdateState(State State)
     {
-        if (ActiveAttack)
+        switch (State)
         {
-            ActiveAttack = false;
-            TargetForAttack = null;
-            GameObject arrowObj = ArrowPool.GetObject();
-            arrowObj.transform.position = transform.position;
-            arrowObj.transform.rotation = transform.rotation;
-            arrowObj.GetComponent<Arrow>().GoTarget(TargetForAttack,AttackRateTime);
-            arrowObj.SetActive(true);
-        }
-        else
-        {
-
+            case State.Attack:
+                SoldierState = State;
+                JustOneEntry = false;
+                StartCoroutine(Attack());
+                break;
+            case State.Die:
+                SoldierState = State;
+                break;
+            case State.Idle:
+                SoldierState = State;
+                JustOneEntry = true;
+                break;
+            default:
+                break;
         }
     }
-
+    public override IEnumerator Attack()
+    {
+        if (SoldierState == State.Attack)
+        {
+            if (TargetForAttack != null)
+            {
+                GameObject arrowObj = ArrowPool.GetObject();
+                arrowObj.transform.position = transform.position;
+                arrowObj.transform.rotation = transform.rotation;
+                arrowObj.GetComponent<Arrow>().GoTarget(TargetForAttack, AttackRateTime);
+                arrowObj.SetActive(true);
+            }
+            else
+            {
+                UpdateState(State.Idle);
+            }
+        }
+        yield return new WaitForSeconds(AttackRateTime);
+        StartCoroutine(Attack());
+    }
+    private void SetAIValues()
+    {
+        _AIControl._AIPath.maxSpeed = MoveSpeed;
+    }
     public void GoToEmptyGrid()
     {
-        transform.parent.transform.DOMove(GridInfo.Instance.GetClosestGrid(transform).position, 0.5f);
+        Transform Closest= GridInfo.Instance.GetClosestGrid(transform);
+        GridElement _GridELement = Closest.GetComponent<GridElement>();
+        transform.parent.transform.DOMove(Closest.position, 0.5f);
+        _GridELement.ThereAreSomething = true;
     }
     public void Die()
     {
         throw new System.NotImplementedException();
     }
-    void IProduct.Damage()
+    void IProduct.Damage(int value)
     {
         throw new System.NotImplementedException();
     }
+
 }
