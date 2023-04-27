@@ -15,7 +15,7 @@ public class Soldier1 : Soldier, IProduct
     }
     private void Update()
     {
-        if (_AIControl._AIPath.reachedDestination == true /*&& TargetForAttack != null*/ && JustOneEntry&&_AIControl._AIDestinationSetter.target!=null)
+        if (_AIControl._AIPath.reachedDestination == true /*&& TargetForAttack != null*/ && JustOneEntry/*&&_AIControl._AIDestinationSetter.target!=null*/)
         {
             UpdateState(State.Attack);
         }
