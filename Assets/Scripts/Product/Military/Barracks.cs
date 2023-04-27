@@ -12,6 +12,7 @@ public class Barracks : MilitaryProduct, IProduct
     [SerializeField] private Slider _Slider;
     public void Die()
     {
+        AstarPath.active.Scan();
         Destroy(gameObject);
     }
 
