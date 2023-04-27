@@ -7,28 +7,24 @@ using UnityEngine;
 public class GameManager : SingletonManager<GameManager>
 {
     public static event Action<GameState> onStateChanged;
-
+    public GameState GameState;
     void Start()
     {
-        UpdateState(GameState.Run);
+        UpdateState(GameState.RunGame);
     }
     public async void UpdateState(GameState state)
     {
-        switch (state)
+
+        if (state != GameState)
         {
-            case GameState.BuildPlacement:
-                break;
-            case GameState.Run:
-                break;
-            default:
-                break;
+            GameState = state;
+            onStateChanged?.Invoke(state);
         }
-        onStateChanged?.Invoke(state);
     }
 }
 public enum GameState
 {
-    BuildPlacement, Run
+    BuildPlacement, RunGame, ThereIsSomeAttack
 }
 
 

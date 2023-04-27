@@ -18,7 +18,6 @@ public class Drag : MonoBehaviour, IPointerDownHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        GameManager.Instance.UpdateState(GameState.BuildPlacement);
         DragManager.Instance.Build = CornerPos;
         var inter = Parent.GetComponent<IProduct>();
         if (inter != null)
@@ -26,9 +25,24 @@ public class Drag : MonoBehaviour, IPointerDownHandler
     }
     public void DragHandler(BaseEventData data)
     {
+
+        //if (GameManager.Instance.GameState != GameState.ThereIsSomeAttack)
+        //{
+        //    GameManager.Instance.UpdateState(GameState.BuildPlacement);
+        //    PointerEventData PointerData = (PointerEventData)data;
+        //    Vector2 Position;
+        //    RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)Canvas.transform, PointerData.position, Canvas.worldCamera, out Position);
+        //    transform.position = Vector2.Lerp(transform.position, Canvas.transform.TransformPoint(Position), Sensivity * Time.deltaTime);
+        //}
+        //else
+        //{
+        //    PopUpControl.Instance.OpenPopUp("Wait until the war is over to move buildings");
+        //}
+        GameManager.Instance.UpdateState(GameState.BuildPlacement);
         PointerEventData PointerData = (PointerEventData)data;
         Vector2 Position;
         RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)Canvas.transform, PointerData.position, Canvas.worldCamera, out Position);
         transform.position = Vector2.Lerp(transform.position, Canvas.transform.TransformPoint(Position), Sensivity * Time.deltaTime);
     }
 }
+

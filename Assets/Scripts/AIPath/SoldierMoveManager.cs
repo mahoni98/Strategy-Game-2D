@@ -8,6 +8,8 @@ public class SoldierMoveManager : SingletonManager<SoldierMoveManager>
     [SerializeField] private CreateTarget _CreateTarget;
     private bool SoldierSelected = false;
 
+    public AIControl _CurrentSoldierAI { get => CurrentSoldierAI; set => CurrentSoldierAI = value; }
+
     private void OnEnable()
     {
         GameManager.onStateChanged += StateChange;
@@ -17,42 +19,43 @@ public class SoldierMoveManager : SingletonManager<SoldierMoveManager>
         switch (State)
         {
             case GameState.BuildPlacement:
-                CurrentSoldierAI = null;
+                _CurrentSoldierAI = null;
                 break;
-            case GameState.Run:
+            case GameState.RunGame:
                 break;
         }
     }
     public void BeMove(Transform GridTransform)
     {
-        Soldier SoldierBase = CurrentSoldierAI.Soldier;
+        Soldier SoldierBase = _CurrentSoldierAI.Soldier;
 
         if (SoldierSelected && SoldierBase.SoldierState != Soldier.State.Attack)
         {
             Transform Target = _CreateTarget.Create();
             Target.position = GridTransform.position;
-            CurrentSoldierAI.Move(Target);
-            CurrentSoldierAI._AIPath.endReachedDistance = 0;
+            _CurrentSoldierAI.Move(Target);
+            _CurrentSoldierAI._AIPath.endReachedDistance = 0;
         }
+        
     }
     public void MoveForAttack(Transform TransforForAttack)
     {
-        Soldier SoldierBase = CurrentSoldierAI.Soldier;
+        Soldier SoldierBase = _CurrentSoldierAI.Soldier;
 
         if (SoldierSelected && SoldierBase.SoldierState != Soldier.State.Attack)
         {
             Transform Target = _CreateTarget.Create();
             Target.position = TransforForAttack.position;
-            CurrentSoldierAI.Move(Target);
-            CurrentSoldierAI._AIPath.endReachedDistance = SoldierBase.AttackDistance;
-            CurrentSoldierAI.Soldier.TargetForAttack = TransforForAttack;
-            CurrentSoldierAI = null;
+            _CurrentSoldierAI.Move(Target);
+            _CurrentSoldierAI._AIPath.endReachedDistance = SoldierBase.AttackDistance;
+            _CurrentSoldierAI.Soldier.TargetForAttack = TransforForAttack;
+            _CurrentSoldierAI = null;
         }
     }
 
     public void ChooseSoldier(AIControl Soldier)
     {
-        CurrentSoldierAI = Soldier;
+        _CurrentSoldierAI = Soldier;
         SoldierSelected = true;
     }
 }

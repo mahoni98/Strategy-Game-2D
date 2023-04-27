@@ -13,7 +13,7 @@ public class BuildSetPos : SingletonManager<BuildSetPos>
             Build.parent = BuildParent;
             Build.DOLocalMove(new Vector3(OffsetX, OffsetY, 0), 0.1f);
             _TriggerControl.MarkGrid();
-            GameManager.Instance.UpdateState(GameState.Run);
+            GameManager.Instance.UpdateState(GameState.RunGame);
             AstarPath.active.Scan();
 
         });

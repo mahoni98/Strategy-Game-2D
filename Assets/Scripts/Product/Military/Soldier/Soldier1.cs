@@ -15,7 +15,7 @@ public class Soldier1 : Soldier, IProduct
     }
     private void Update()
     {
-        if (_AIControl._AIPath.reachedDestination == true /*&& TargetForAttack != null*/ && JustOneEntry)
+        if (_AIControl._AIPath.reachedDestination == true /*&& TargetForAttack != null*/ && JustOneEntry&&_AIControl._AIDestinationSetter.target!=null)
         {
             UpdateState(State.Attack);
         }
@@ -28,6 +28,7 @@ public class Soldier1 : Soldier, IProduct
                 SoldierState = State;
                 JustOneEntry = false;
                 StartCoroutine(Attack());
+                GameManager.Instance.UpdateState(GameState.ThereIsSomeAttack);
                 break;
             case State.Die:
                 SoldierState = State;
@@ -35,6 +36,7 @@ public class Soldier1 : Soldier, IProduct
             case State.Idle:
                 SoldierState = State;
                 JustOneEntry = true;
+                GameManager.Instance.UpdateState(GameState.RunGame);
                 break;
             default:
                 break;
@@ -55,10 +57,12 @@ public class Soldier1 : Soldier, IProduct
             else
             {
                 UpdateState(State.Idle);
+                //SoldierMoveManager.Instance._CurrentSoldierAI = null;
             }
+
+            yield return new WaitForSeconds(AttackRateTime);
+            StartCoroutine(Attack());
         }
-        yield return new WaitForSeconds(AttackRateTime);
-        StartCoroutine(Attack());
     }
     private void SetAIValues()
     {
@@ -66,7 +70,7 @@ public class Soldier1 : Soldier, IProduct
     }
     public void GoToEmptyGrid()
     {
-        Transform Closest= GridInfo.Instance.GetClosestGrid(transform);
+        Transform Closest = GridInfo.Instance.GetClosestGrid(transform);
         GridElement _GridELement = Closest.GetComponent<GridElement>();
         transform.parent.transform.DOMove(Closest.position, 0.5f);
         _GridELement.ThereAreSomething = true;
