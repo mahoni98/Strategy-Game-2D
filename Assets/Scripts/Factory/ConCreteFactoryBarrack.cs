@@ -12,6 +12,7 @@ public class ConCreteFactoryBarrack : Factory
         instance.transform.localPosition = Vector3.zero;
         instance.name = ProductPrefab.name + ProductionCount.ToString();
         ProductionCount++;
+        GameManager.Instance.UpdateState(GameState.BuildPlacement);
         // each product contains its own logic
 
         // add any unique behavior to this factory

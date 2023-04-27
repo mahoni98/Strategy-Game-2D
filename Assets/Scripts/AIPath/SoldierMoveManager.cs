@@ -8,6 +8,21 @@ public class SoldierMoveManager : SingletonManager<SoldierMoveManager>
     [SerializeField] private CreateTarget _CreateTarget;
     private bool SoldierSelected = false;
 
+    private void OnEnable()
+    {
+        GameManager.onStateChanged += StateChange;
+    }
+    private void StateChange(GameState State)
+    {
+        switch (State)
+        {
+            case GameState.BuildPlacement:
+                CurrentSoldierAI = null;
+                break;
+            case GameState.Run:
+                break;
+        }
+    }
     public void BeMove(Transform GridTransform)
     {
         Soldier SoldierBase = CurrentSoldierAI.Soldier;
@@ -31,7 +46,7 @@ public class SoldierMoveManager : SingletonManager<SoldierMoveManager>
             CurrentSoldierAI.Move(Target);
             CurrentSoldierAI._AIPath.endReachedDistance = SoldierBase.AttackDistance;
             CurrentSoldierAI.Soldier.TargetForAttack = TransforForAttack;
-          
+            CurrentSoldierAI = null;
         }
     }
 

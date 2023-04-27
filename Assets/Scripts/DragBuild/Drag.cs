@@ -18,8 +18,8 @@ public class Drag : MonoBehaviour, IPointerDownHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
+        GameManager.Instance.UpdateState(GameState.BuildPlacement);
         DragManager.Instance.Build = CornerPos;
-
         var inter = Parent.GetComponent<IProduct>();
         if (inter != null)
             GetProductInfo.Instance.SetInfoToPanel(Parent.GetComponent<Product>());

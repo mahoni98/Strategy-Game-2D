@@ -16,15 +16,17 @@ public class ClickToCreate : MonoBehaviour
         ProductUýItem.Type Type = Btn.GetComponent<ProductMenuBtn>()._ProductUýItem.WhichBuild;
         switch (Type)
         {
+
             case ProductUýItem.Type.Barracks:
                 _ConCreteFactoryBarrack.GetProduct(_GridElement);
                 break;
             case ProductUýItem.Type.PowerPlant:
                 _ConCreteFactoryPowerPlant.GetProduct(_GridElement);
                 break;
-            case ProductUýItem.Type.Soldier:
-                _ConCreteFactorySoldier.GetProduct(_GridElement);
-                break;
+            //case ProductUýItem.Type.Soldier:
+            //    _ConCreteFactorySoldier.GetProduct(_GridElement);
+            //    break;
+
             default:
                 break;
         }

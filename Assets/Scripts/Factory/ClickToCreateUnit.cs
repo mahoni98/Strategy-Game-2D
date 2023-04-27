@@ -15,7 +15,7 @@ public class ClickToCreateUnit : MonoBehaviour
         switch (Type)
         {
             case Product.Type.Barracks:
-                _ConCreteFactorySoldier.GetProduct(CreatePosition);
+                _ConCreteFactorySoldier.GetProduct(CreatePosition); // creating barracks product. so Soldier 
                 break;
             case Product.Type.PowerPlant:
                 break;
