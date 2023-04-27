@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 376218532}
   - component: {fileID: 376218534}
   - component: {fileID: 376218533}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 263547096156089655}
   - component: {fileID: 278970570}
   - component: {fileID: 1041190416244962889}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: GridElement
   m_TagString: Untagged
   m_Icon: {fileID: 0}

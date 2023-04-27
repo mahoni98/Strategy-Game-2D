@@ -14,8 +14,6 @@ public class AIControl : MonoBehaviour, IPointerDownHandler
     {
         //Debug.Log("1 " + _AIPath.reachedDestination);
         //Debug.Log("2 " + _AIPath.reachedEndOfPath);
-
-       
     }
     private void Start()
     {
@@ -26,8 +24,6 @@ public class AIControl : MonoBehaviour, IPointerDownHandler
     public void StopWalk()
     {
         _AIPath.canMove = false;
-        // yeni gidilcek yön verilir. 
-
     }
     public void Move(Transform Target)
     {

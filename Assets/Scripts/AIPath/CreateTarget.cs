@@ -9,7 +9,6 @@ public class CreateTarget : MonoBehaviour
     public Transform Create()
     {
         GameObject Target = Instantiate(Prefab, FindObjectOfType<Canvas>().transform);
-        //Target.transform.localPosition = CreatePos.localPosition;
         return Target.transform;
     }
 

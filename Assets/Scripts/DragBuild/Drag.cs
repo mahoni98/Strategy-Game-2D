@@ -9,13 +9,8 @@ public class Drag : MonoBehaviour, IPointerDownHandler
     [SerializeField] private Canvas Canvas;
     [SerializeField] private float Sensivity;
 
-
     [SerializeField] private Transform CornerPos;
     [SerializeField] private Transform Parent;
-
-
-
-
 
     private void Start()
     {
