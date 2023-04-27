@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Barracks : MilitaryProduct, IProduct
 {
     public Transform RandomPos;
-    
+    [SerializeField] private Slider _Slider;
     public void Die()
     {
         Destroy(gameObject);
@@ -18,6 +18,7 @@ public class Barracks : MilitaryProduct, IProduct
     public void Damage(int value)
     {
         HealthValue -= value;
+        _Slider.value -= (value / 100f);
         if (HealthValue <= 0)
         {
             Die();
