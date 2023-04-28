@@ -43,10 +43,9 @@ public class GridElement : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
     {
         if (DragManager.Instance.Entry && DragManager.Instance.Build != null)
         {
-            ParentTriggerControl _ParentTriggerControl = DragManager.Instance.Build.transform.parent.GetComponent<ParentTriggerControl>();
+            //ParentTriggerControl _ParentTriggerControl = DragManager.Instance.Build.transform.parent.GetComponent<ParentTriggerControl>();
             TriggerControl _TriggerControl = DragManager.Instance.Build.transform.parent.GetComponent<TriggerControl>();
-
-            BuildSetPos.Instance.SetPosition(DragManager.Instance.Build, _ParentTriggerControl.BuildParent, transform, _TriggerControl, _ParentTriggerControl.OffsetX, _ParentTriggerControl.OffsetY);
+            BuildSetPos.Instance.SetPosition(DragManager.Instance.Build, _TriggerControl.BuildParent, transform, _TriggerControl, _TriggerControl.OffsetX, _TriggerControl.OffsetY);
         }
     }
 }

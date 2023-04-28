@@ -14,14 +14,12 @@ public class ParentTriggerControl : MonoBehaviour, IPointerDownHandler, IPointer
 
 
     [Header("Unity Variable")]
-    [SerializeField] public Transform BuildParent;
     [SerializeField] private Transform Build;
 
 
     [Header("Basic Variable")]
     [SerializeField] private bool CanPlace;
-    [SerializeField] public float OffsetX;
-    [SerializeField] public float OffsetY;
+   
 
     private void Start()
     {
@@ -30,7 +28,6 @@ public class ParentTriggerControl : MonoBehaviour, IPointerDownHandler, IPointer
         _TriggerControl = GetComponent<TriggerControl>();
 
         Build = transform;
-        BuildParent = transform.parent;
 
         DisabledTrigger();
     }

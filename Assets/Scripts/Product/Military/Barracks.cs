@@ -9,7 +9,9 @@ using UnityEngine.UI;
 public class Barracks : MilitaryProduct, IProduct
 {
     public Transform RandomPos;
+
     [SerializeField] private Slider _Slider;
+
     public void Die()
     {
         AstarPath.active.Scan();

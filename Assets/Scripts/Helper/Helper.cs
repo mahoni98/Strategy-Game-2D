@@ -19,17 +19,5 @@ namespace MyHelper
                 List.Remove(_GridElement);
             }
         }
-        public void SoldierListControl(List<ISoldier> List, ISoldier Soldier)
-        {
-            if (!List.Contains(Soldier))
-            {
-                List.Add(Soldier);
-            }
-            else
-            {
-                List.Remove(Soldier);
-            }
-        }
     }
-
 }

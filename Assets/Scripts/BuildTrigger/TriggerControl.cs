@@ -6,33 +6,22 @@ using MyHelper;
 using UnityEngine.EventSystems;
 public class TriggerControl : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-    [SerializeField] private bool Placed;
     [SerializeField] private DragColorControl _DragColorControl;
-    [SerializeField] private bool _AnyTriggerBusyGrid = false; // does it have any contact with the full grid
+    [SerializeField] public float OffsetX;
+    [SerializeField] public float OffsetY;
+    private Transform _BuildParent;
+    private bool CanPlace = true;
+    private bool Placed;
     public List<GridElement> GridElements;
     private GridElement FalseGridELement;
-    bool CanPlace = true;
-
     Helper h = new Helper();
-    public bool AnyTriggerBusyGrid
-    {
-        get { return _AnyTriggerBusyGrid; }
-        set { _AnyTriggerBusyGrid = value; }
-    }
+    public Transform BuildParent { get => _BuildParent; private set => _BuildParent = value; }
+
+    
     private void Start()
     {
-        if (transform.parent.GetComponent<DragColorControl>() != null)
-        {
-            _DragColorControl = transform.parent.GetComponent<DragColorControl>();
-        }
-        else
-        {
-            _DragColorControl = GetComponent<DragColorControl>();
-        }
-    }
-    private void Update()
-    {
-        Debug.Log(CanPlace);
+        _DragColorControl = GetComponent<DragColorControl>();
+        BuildParent = transform.parent;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -72,7 +61,7 @@ public class TriggerControl : MonoBehaviour, IPointerUpHandler, IPointerDownHand
             {
                 if (Grid.ExitBuild(transform.parent.name))
                 {
-                    AnyTriggerBusyGrid = false;
+                    //AnyTriggerBusyGrid = false;
                     collision.GetComponent<Image>().color = Color.gray;
                     h.GridElemetListControl(GridElements, Grid);
                 }
@@ -89,7 +78,6 @@ public class TriggerControl : MonoBehaviour, IPointerUpHandler, IPointerDownHand
             item.PlacedBuildName = transform.parent.name;
         }
     }
-
     public void OnPointerUp(PointerEventData eventData)
     {
         if (CanPlace)
@@ -98,6 +86,8 @@ public class TriggerControl : MonoBehaviour, IPointerUpHandler, IPointerDownHand
             MarkGrid();
             GetComponent<Collider2D>().enabled = false;
             _DragColorControl.SetColor(DragColorControl.WhichColor.Default);
+            DragManager.Instance.Entry = false;
+            DragManager.Instance.Build = null;
         }
     }
 
