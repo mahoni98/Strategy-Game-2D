@@ -11,7 +11,6 @@ public class GetProductInfo : SingletonManager<GetProductInfo>
     [SerializeField] private TextMeshProUGUI NameText;
     [SerializeField] private TextMeshProUGUI InfoText;
     [SerializeField] private Image ProductImage;
-    //[SerializeField] private Transform ProductPosition;
 
 
 
@@ -19,7 +18,6 @@ public class GetProductInfo : SingletonManager<GetProductInfo>
     [SerializeField] private TextMeshProUGUI UnitNameText;
     [SerializeField] private TextMeshProUGUI UnitInfoText;
     [SerializeField] private Image UnitImage;
-    //[SerializeField] private Image UnitImage;
 
 
     [Header("GameObjects")]
@@ -45,7 +43,6 @@ public class GetProductInfo : SingletonManager<GetProductInfo>
         NameText.text = Product.Name;
         InfoText.text = Product.ProductInfo;
         ProductImage.sprite = Product.ProductImage;
-        //ProductPosition = Product.transform;
         if (Product.CanProduce == false) { UnitArea.SetActive(false); return; }
         UnitArea.SetActive(true);
         UnitNameText.text = Product.UnitName;
@@ -58,7 +55,6 @@ public class GetProductInfo : SingletonManager<GetProductInfo>
         if (Product.CanProduce)
         {
             UnityCreateButton.SetActive(true);
-
         }
     }
 

@@ -12,16 +12,10 @@ public class SoldierTriggerControl : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GridElement Grid = collision.GetComponent<GridElement>();
-        if (Grid != null && Grid.ThereAreSomething == false  /*&& _AnyTriggerBusyGrid == false*/)
+        if (Grid != null && Grid.ThereAreSomething == false)
         {
-            collision.GetComponent<Image>().color = Color.black;
             Grid.EnterBuild(transform.parent.name);
             Grid.ThereAreSomething = true;
-
-        }
-        else
-        {
-            //_AnyTriggerBusyGrid = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -35,5 +29,5 @@ public class SoldierTriggerControl : MonoBehaviour
             }
         }
     }
-    
+
 }

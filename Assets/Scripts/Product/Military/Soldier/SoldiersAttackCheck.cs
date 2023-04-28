@@ -6,12 +6,6 @@ using MyHelper;
 public class SoldiersAttackCheck : SingletonManager<SoldiersAttackCheck>
 {
     public Soldier[] SoldierParents;
-    Helper h = new Helper();
-    private void Update()
-    {
-
-    }
-
     public void SoldierActiveAttackControl()
     {
         SoldierParents = FindObjectsOfType<Soldier>();

@@ -9,7 +9,6 @@ using TMPro;
 public class GridInfo : SingletonManager<GridInfo>
 {
     public List<GridItem> gridItems;
-    public List<Transform> willExplosinGrid;
 
     int Counter = 0;
     private void Start()
@@ -23,7 +22,6 @@ public class GridInfo : SingletonManager<GridInfo>
                 Item.Satir = i + 1;
                 Item.Sutun = j + 1;
                 Item.gridElementScript = transform.GetChild(j + Counter).GetComponent<GridElement>();
-                //Item.DamageText = Item.gridElementScript.DamageText;
                 Item.Name = Item.gridElementScript.name;
                 Item.Object = Item.gridElementScript.gameObject.transform;
                 gridItems.Add(Item);
@@ -40,7 +38,7 @@ public class GridInfo : SingletonManager<GridInfo>
         foreach (var t in gridItems)
         {
             float dist = Vector3.Distance(t.Object.position, currentPos);
-            if (t.gridElementScript.ThereAreSomething == false /*&& t.gridElementScript.ThereAreEnemy == false*/)
+            if (t.gridElementScript.ThereAreSomething == false)
             {
                 if (dist < minDist)
                 {

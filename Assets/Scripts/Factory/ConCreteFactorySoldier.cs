@@ -13,9 +13,6 @@ public class ConCreteFactorySoldier : Factory
         instance.name = ProductPrefab.name + ProductionCount.ToString();
         instance.transform.localPosition = BarrackPosition.localPosition;
         ProductionCount++;
-        // each product contains its own logic
-
-        // add any unique behavior to this factory
         return newProduct;
 
     }

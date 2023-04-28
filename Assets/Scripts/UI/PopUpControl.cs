@@ -8,7 +8,6 @@ public class PopUpControl : SingletonManager<PopUpControl>
     [SerializeField] private GameObject Panel;
     [SerializeField] private TextMeshProUGUI Text;
     [SerializeField] private string _PlaceFirst = "First of all place the build";
-
     public string PlaceFirst { get => _PlaceFirst; private set => _PlaceFirst = value; }
 
     private void OnEnable()
@@ -39,7 +38,6 @@ public class PopUpControl : SingletonManager<PopUpControl>
     {
         Panel.SetActive(false);
     }
-
     public bool PlacemenentControl()
     {
         if (GameManager.Instance.GameState == GameState.RunGame)

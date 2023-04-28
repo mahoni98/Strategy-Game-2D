@@ -14,7 +14,6 @@ public class GridElement : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
 
     public bool ExitBuild(string Name)
     {
-
         if (_PlacedBuildName == Name)
         {
             WhenGridAction("");
@@ -32,18 +31,15 @@ public class GridElement : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
     {
         _PlacedBuildName = Name;
     }
-
     public void OnPointerDown(PointerEventData eventData)
     {
         if (ThereAreSomething == false)
             SoldierMoveManager.Instance.BeMove(transform);
     }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (DragManager.Instance.Entry && DragManager.Instance.Build != null)
         {
-            //ParentTriggerControl _ParentTriggerControl = DragManager.Instance.Build.transform.parent.GetComponent<ParentTriggerControl>();
             TriggerControl _TriggerControl = DragManager.Instance.Build.transform.parent.GetComponent<TriggerControl>();
             BuildSetPos.Instance.SetPosition(DragManager.Instance.Build, _TriggerControl.BuildParent, transform, _TriggerControl, _TriggerControl.OffsetX, _TriggerControl.OffsetY);
         }

@@ -8,6 +8,5 @@ public class EnergyProduct : Product
 {
     public virtual float MaxCapacity { get; set; }
     public float EnergyCapacity;
-
 }
 

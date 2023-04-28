@@ -8,17 +8,14 @@ using TMPro;
 using UnityEngine.UI;
 public class Barracks : MilitaryProduct, IProduct
 {
-    public Transform RandomPos;
-
     [SerializeField] private Slider _Slider;
-
     public void Die()
     {
         AstarPath.active.Scan();
         Destroy(gameObject);
     }
 
-    public void Damage(int value)
+    public void TakeDamage(int value)
     {
         HealthValue -= value;
         _Slider.value -= (value / 100f);

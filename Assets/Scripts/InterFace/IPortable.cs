@@ -7,7 +7,5 @@ using System.Threading.Tasks;
 
 public interface IPortable
 {
-    void EnabledTrigger();
-    IEnumerator DisabledTrigger();
 
 }

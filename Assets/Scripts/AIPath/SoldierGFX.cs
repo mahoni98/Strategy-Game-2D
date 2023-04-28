@@ -5,12 +5,10 @@ using Pathfinding;
 public class SoldierGFX : MonoBehaviour
 {
     public AIPath aiPath;
-
     private void Start()
     {
         aiPath = transform.parent.GetComponent<AIPath>();
     }
-    // Update is called once per frame
     void Update()
     {
         if (aiPath.desiredVelocity.x >= 0.01f)

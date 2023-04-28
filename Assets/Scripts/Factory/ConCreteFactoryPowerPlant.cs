@@ -13,10 +13,6 @@ public class ConCreteFactoryPowerPlant : Factory
         instance.transform.localPosition = Vector3.zero;
         instance.name = ProductPrefab.name + ProductionCount.ToString();
         ProductionCount++;
-        // each product contains its own logic
-
-        // add any unique behavior to this factory
         return newProduct;
-
     }
 }

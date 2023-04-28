@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ClickToCreateUnit : MonoBehaviour
 {
-    //public Transform BornTransform;
     public ConCreteFactoryBarrack _ConCreteFactoryBarrack;
     public ConCreteFactoryPowerPlant _ConCreteFactoryPowerPlant;
     public ConCreteFactorySoldier _ConCreteFactorySoldier;

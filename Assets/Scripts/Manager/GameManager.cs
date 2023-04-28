@@ -18,7 +18,6 @@ public class GameManager : SingletonManager<GameManager>
     }
     public async void UpdateState(GameState state)
     {
-
         if (state != GameState)
         {
             GameState = state;

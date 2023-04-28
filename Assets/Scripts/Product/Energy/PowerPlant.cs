@@ -9,8 +9,7 @@ using UnityEngine.UI;
 public class PowerPlant : EnergyProduct, IProduct
 {
     [SerializeField] private Slider _Slider;
-
-    public void Damage(int value)
+    public void TakeDamage(int value)
     {
         HealthValue -= value;
         _Slider.value -= (value / 100f);
@@ -19,7 +18,6 @@ public class PowerPlant : EnergyProduct, IProduct
             Die();
         }
     }
-
     public void Die()
     {
         AstarPath.active.Scan();

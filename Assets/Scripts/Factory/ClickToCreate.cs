@@ -12,7 +12,6 @@ public class ClickToCreate : MonoBehaviour
 
     public void GetProductAtClick(Button Btn)
     {
-        // check click with raycast
         ProductUýItem.Type Type = Btn.GetComponent<ProductMenuBtn>()._ProductUýItem.WhichBuild;
         GameManager.Instance.UpdateState(GameState.BuildPlacement);
 
@@ -24,10 +23,6 @@ public class ClickToCreate : MonoBehaviour
             case ProductUýItem.Type.PowerPlant:
                 _ConCreteFactoryPowerPlant.GetProduct(_GridElement);
                 break;
-            //case ProductUýItem.Type.Soldier:
-            //    _ConCreteFactorySoldier.GetProduct(_GridElement);
-            //    break;
-
             default:
                 break;
         }

@@ -6,7 +6,6 @@ public class Soldier1 : Soldier, ISoldier,IProduct
 {
     [SerializeField] private AIControl _AIControl;
     public ObjectPool ArrowPool;
-
     private void Start()
     {
         UpdateState(State.Idle);
@@ -15,7 +14,7 @@ public class Soldier1 : Soldier, ISoldier,IProduct
     }
     private void Update()
     {
-        if (_AIControl._AIPath.reachedDestination == true /*&& TargetForAttack != null*/ && JustOneEntry && TargetForAttack != null)
+        if (_AIControl._AIPath.reachedDestination == true && JustOneEntry && TargetForAttack != null)
         {
             UpdateState(State.Attack);
         }
@@ -58,7 +57,6 @@ public class Soldier1 : Soldier, ISoldier,IProduct
                 UpdateState(State.Idle);
                 SoldiersAttackCheck.Instance.SoldierActiveAttackControl();
             }
-
             yield return new WaitForSeconds(AttackRateTime);
             StartCoroutine(Attack());
         }
@@ -79,8 +77,7 @@ public class Soldier1 : Soldier, ISoldier,IProduct
         throw new System.NotImplementedException();
     }
 
-
-    void IProduct.Damage(int value)
+    void IProduct.TakeDamage(int value)
     {
         throw new System.NotImplementedException();
     }

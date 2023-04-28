@@ -17,12 +17,9 @@ public class ProductClickControl : MonoBehaviour, IPointerDownHandler
         if (SoldierMoveManager.Instance._CurrentSoldierAI != null)
             AttackButton.SetActive(true);
     }
-
-
     public void Attack()
     {
         SoldierMoveManager.Instance.MoveForAttack(transform);
         AttackButton.SetActive(false);
-
     }
 }

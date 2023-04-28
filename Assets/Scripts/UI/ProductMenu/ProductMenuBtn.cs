@@ -8,7 +8,6 @@ public class ProductMenuBtn : ProductMenuOperations
 {
     [SerializeField] private TextMeshProUGUI BtnNameText;
     [SerializeField] private Image BtnImage;
-
     void Start()
     {
         GetBtnItem(BtnNameText, BtnImage);
