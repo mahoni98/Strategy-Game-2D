@@ -17,7 +17,7 @@ public class TriggerControl : MonoBehaviour, IPointerUpHandler, IPointerDownHand
     Helper h = new Helper();
     public Transform BuildParent { get => _BuildParent; private set => _BuildParent = value; }
 
-    
+
     private void Start()
     {
         _DragColorControl = GetComponent<DragColorControl>();
@@ -30,7 +30,7 @@ public class TriggerControl : MonoBehaviour, IPointerUpHandler, IPointerDownHand
         if (Grid.ThereAreSomething == false)
         {
             collision.GetComponent<Image>().color = Color.black;
-            Grid.EnterBuild(transform.parent.name);
+            Grid.EnterBuild(BuildParent.name);
             h.GridElemetListControl(GridElements, Grid);
         }
     }
@@ -39,7 +39,7 @@ public class TriggerControl : MonoBehaviour, IPointerUpHandler, IPointerDownHand
         if (CanPlace)
         {
             GridElement Grid = collision.GetComponent<GridElement>();
-            if (Grid.ThereAreSomething == false || Grid.PlacedBuildName == transform.parent.name)
+            if (Grid.ThereAreSomething == false || Grid.PlacedBuildName == BuildParent.name)
             {
                 _DragColorControl.SetColor(DragColorControl.WhichColor.GreenOne);
                 CanPlace = true;
@@ -59,7 +59,7 @@ public class TriggerControl : MonoBehaviour, IPointerUpHandler, IPointerDownHand
         {
             if (Placed == false)
             {
-                if (Grid.ExitBuild(transform.parent.name))
+                if (Grid.ExitBuild(BuildParent.name))
                 {
                     //AnyTriggerBusyGrid = false;
                     collision.GetComponent<Image>().color = Color.gray;
@@ -75,7 +75,7 @@ public class TriggerControl : MonoBehaviour, IPointerUpHandler, IPointerDownHand
         foreach (var item in GridElements)
         {
             item.ThereAreSomething = true;
-            item.PlacedBuildName = transform.parent.name;
+            item.PlacedBuildName = BuildParent.name;
         }
     }
     public void OnPointerUp(PointerEventData eventData)
@@ -95,5 +95,14 @@ public class TriggerControl : MonoBehaviour, IPointerUpHandler, IPointerDownHand
     {
         GetComponent<Collider2D>().enabled = true;
         Placed = false;
+    }
+    private void OnDestroy()
+    {
+        foreach (var item in GridElements)
+        {
+            item.ThereAreSomething = false;
+            item.PlacedBuildName = "";
+            item.GetComponent<Image>().color = Color.gray;
+        }
     }
 }

@@ -20,7 +20,7 @@ public class PowerPlant : EnergyProduct, IProduct
     }
     public void Die()
     {
-        AstarPath.active.Scan();
         Destroy(gameObject);
+        AstarPath.active.Scan();
     }
 }
