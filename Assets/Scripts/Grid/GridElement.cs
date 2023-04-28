@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
-public class GridElement : MonoBehaviour, IPointerDownHandler
+public class GridElement : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
 {
     [SerializeField] private bool _ThereAreSomething = false;
     [SerializeField] private string _PlacedBuildName;
@@ -14,6 +14,7 @@ public class GridElement : MonoBehaviour, IPointerDownHandler
 
     public bool ExitBuild(string Name)
     {
+
         if (_PlacedBuildName == Name)
         {
             WhenGridAction("");
@@ -24,7 +25,8 @@ public class GridElement : MonoBehaviour, IPointerDownHandler
     }
     public void EnterBuild(string Name)
     {
-        WhenGridAction(Name);
+        if (_PlacedBuildName == "")
+            WhenGridAction(Name);
     }
     public void WhenGridAction(string Name)
     {
@@ -37,4 +39,14 @@ public class GridElement : MonoBehaviour, IPointerDownHandler
             SoldierMoveManager.Instance.BeMove(transform);
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (DragManager.Instance.Entry && DragManager.Instance.Build != null)
+        {
+            ParentTriggerControl _ParentTriggerControl = DragManager.Instance.Build.transform.parent.GetComponent<ParentTriggerControl>();
+            TriggerControl _TriggerControl = DragManager.Instance.Build.transform.parent.GetComponent<TriggerControl>();
+
+            BuildSetPos.Instance.SetPosition(DragManager.Instance.Build, _ParentTriggerControl.BuildParent, transform, _TriggerControl, _ParentTriggerControl.OffsetX, _ParentTriggerControl.OffsetY);
+        }
+    }
 }

@@ -2,7 +2,7 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections;
-public class Soldier1 : Soldier, IProduct
+public class Soldier1 : Soldier, ISoldier,IProduct
 {
     [SerializeField] private AIControl _AIControl;
     public ObjectPool ArrowPool;
@@ -15,7 +15,7 @@ public class Soldier1 : Soldier, IProduct
     }
     private void Update()
     {
-        if (_AIControl._AIPath.reachedDestination == true /*&& TargetForAttack != null*/ && JustOneEntry/*&&_AIControl._AIDestinationSetter.target!=null*/)
+        if (_AIControl._AIPath.reachedDestination == true /*&& TargetForAttack != null*/ && JustOneEntry && TargetForAttack != null)
         {
             UpdateState(State.Attack);
         }
@@ -36,7 +36,6 @@ public class Soldier1 : Soldier, IProduct
             case State.Idle:
                 SoldierState = State;
                 JustOneEntry = true;
-                GameManager.Instance.UpdateState(GameState.RunGame);
                 break;
             default:
                 break;
@@ -57,7 +56,7 @@ public class Soldier1 : Soldier, IProduct
             else
             {
                 UpdateState(State.Idle);
-                //SoldierMoveManager.Instance._CurrentSoldierAI = null;
+                SoldiersAttackCheck.Instance.SoldierActiveAttackControl();
             }
 
             yield return new WaitForSeconds(AttackRateTime);
@@ -79,9 +78,10 @@ public class Soldier1 : Soldier, IProduct
     {
         throw new System.NotImplementedException();
     }
+
+
     void IProduct.Damage(int value)
     {
         throw new System.NotImplementedException();
     }
-
 }

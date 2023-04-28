@@ -12,6 +12,10 @@ public class GameManager : SingletonManager<GameManager>
     {
         UpdateState(GameState.RunGame);
     }
+    private void Update()
+    {
+        Debug.Log(GameState);
+    }
     public async void UpdateState(GameState state)
     {
 

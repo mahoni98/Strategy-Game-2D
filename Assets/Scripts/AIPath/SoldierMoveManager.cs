@@ -36,11 +36,14 @@ public class SoldierMoveManager : SingletonManager<SoldierMoveManager>
             _CurrentSoldierAI.Move(Target);
             _CurrentSoldierAI._AIPath.endReachedDistance = 0;
         }
-        
+
     }
     public void MoveForAttack(Transform TransforForAttack)
     {
+        if (PopUpControl.Instance.PlacemenentControl() == false) return;
+
         Soldier SoldierBase = _CurrentSoldierAI.Soldier;
+
 
         if (SoldierSelected && SoldierBase.SoldierState != Soldier.State.Attack)
         {
@@ -55,6 +58,8 @@ public class SoldierMoveManager : SingletonManager<SoldierMoveManager>
 
     public void ChooseSoldier(AIControl Soldier)
     {
+
+        if (PopUpControl.Instance.PlacemenentControl() == false) return;
         _CurrentSoldierAI = Soldier;
         SoldierSelected = true;
     }

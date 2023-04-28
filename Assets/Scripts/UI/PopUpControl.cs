@@ -7,6 +7,9 @@ public class PopUpControl : SingletonManager<PopUpControl>
 {
     [SerializeField] private GameObject Panel;
     [SerializeField] private TextMeshProUGUI Text;
+    [SerializeField] private string _PlaceFirst = "First of all place the build";
+
+    public string PlaceFirst { get => _PlaceFirst; private set => _PlaceFirst = value; }
 
     private void OnEnable()
     {
@@ -18,7 +21,7 @@ public class PopUpControl : SingletonManager<PopUpControl>
         switch (State)
         {
             case GameState.BuildPlacement:
-                OpenPopUp("First of all place the build");
+                OpenPopUp(PlaceFirst);
                 break;
             case GameState.RunGame:
                 ClosePopUp();
@@ -30,12 +33,23 @@ public class PopUpControl : SingletonManager<PopUpControl>
     public void OpenPopUp(string Sentence)
     {
         Panel.SetActive(true);
-        Text.transform.localScale = Vector3.zero;
-        Text.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce);
         Text.text = Sentence;
     }
     public void ClosePopUp()
     {
-        Text.transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.OutBounce).OnComplete(() => Panel.SetActive(false));
+        Panel.SetActive(false);
+    }
+
+    public bool PlacemenentControl()
+    {
+        if (GameManager.Instance.GameState == GameState.RunGame)
+        {
+            return true;
+        }
+        else
+        {
+            OpenPopUp(PlaceFirst);
+            return false;
+        }
     }
 }

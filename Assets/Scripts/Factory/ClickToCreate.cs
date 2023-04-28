@@ -14,9 +14,10 @@ public class ClickToCreate : MonoBehaviour
     {
         // check click with raycast
         ProductUýItem.Type Type = Btn.GetComponent<ProductMenuBtn>()._ProductUýItem.WhichBuild;
+        GameManager.Instance.UpdateState(GameState.BuildPlacement);
+
         switch (Type)
         {
-
             case ProductUýItem.Type.Barracks:
                 _ConCreteFactoryBarrack.GetProduct(_GridElement);
                 break;

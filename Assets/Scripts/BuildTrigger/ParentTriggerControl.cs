@@ -14,7 +14,7 @@ public class ParentTriggerControl : MonoBehaviour, IPointerDownHandler, IPointer
 
 
     [Header("Unity Variable")]
-    [SerializeField] private Transform BuildParent;
+    [SerializeField] public Transform BuildParent;
     [SerializeField] private Transform Build;
 
 
@@ -41,20 +41,20 @@ public class ParentTriggerControl : MonoBehaviour, IPointerDownHandler, IPointer
     }
     public void CheckTrigger()
     {
-        foreach (var item in _CornerTriggers)
-        {
-            if (item.GridEmpt == false)
-            {
-                CanPlace = false;
-                _DragColorControl.SetColor(DragColorControl.WhichColor.RedOne);
-                return;
-            }
-            else
-            {
-                _DragColorControl.SetColor(DragColorControl.WhichColor.GreenOne);
-                CanPlace = true;
-            }
-        }
+        //foreach (var item in _CornerTriggers)
+        //{
+        //    if (item.GridEmpt == false)
+        //    {
+        //        CanPlace = false;
+        //        _DragColorControl.SetColor(DragColorControl.WhichColor.RedOne);
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        _DragColorControl.SetColor(DragColorControl.WhichColor.GreenOne);
+        //        CanPlace = true;
+        //    }
+        //}
     }
 
     public void EnabledTrigger()
@@ -78,11 +78,13 @@ public class ParentTriggerControl : MonoBehaviour, IPointerDownHandler, IPointer
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        DragManager.Instance.Entry = false;
+        DragManager.Instance.Build = null;
         if (CanPlace)
         {
             StartCoroutine(DisabledTrigger());
             _DragColorControl.SetColor(DragColorControl.WhichColor.Default);
-            BuildSetPos.Instance.SetPosition(Build, BuildParent, GridInfo.Instance.GetClosestGrid(DragManager.Instance.Build), _TriggerControl, OffsetX, OffsetY);
+            //BuildSetPos.Instance.SetPosition(Build, BuildParent, GridInfo.Instance.GetClosestGrid(DragManager.Instance.Build), _TriggerControl, OffsetX, OffsetY);
         }
     }
 }

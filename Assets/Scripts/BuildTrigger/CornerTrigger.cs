@@ -14,16 +14,16 @@ public class CornerTrigger : MonoBehaviour, IPortable
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        GridElement _GridElement = collision.GetComponent<GridElement>();
-        if (_GridElement != null)
-        {
-            if (_GridElement.ThereAreSomething == false)
-            {
-                GridEmpt = true;
-                return;
-            }
-            GridEmpt = false;
-        }
+        //GridElement _GridElement = collision.GetComponent<GridElement>();
+        //if (_GridElement != null)
+        //{
+        //    if (_GridElement.ThereAreSomething == false)
+        //    {
+        //        GridEmpt = true;
+        //        return;
+        //    }
+        //    GridEmpt = false;
+        //}
     }
     public void EnabledTrigger()
     {

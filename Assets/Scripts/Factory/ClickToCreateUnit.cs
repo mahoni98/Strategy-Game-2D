@@ -12,6 +12,7 @@ public class ClickToCreateUnit : MonoBehaviour
 
     public void GetProductAtClick(Product.Type Type, Transform CreatePosition)
     {
+        if (PopUpControl.Instance.PlacemenentControl() == false) return;
         switch (Type)
         {
             case Product.Type.Barracks:
