@@ -25,7 +25,7 @@ public class SoldierTriggerControl : MonoBehaviour
         {
             if (Grid.ExitBuild(transform.parent.name))
             {
-                collision.GetComponent<Image>().color = Color.gray;
+                //collision.GetComponent<Image>().color = Color.gray;
             }
         }
     }
