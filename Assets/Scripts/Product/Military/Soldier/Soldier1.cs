@@ -46,11 +46,12 @@ public class Soldier1 : Soldier, ISoldier,IProduct
         {
             if (TargetForAttack != null)
             {
-                GameObject arrowObj = ArrowPool.GetObject();
+                Arrow arrowObj = ArrowPool.GetObject();
                 arrowObj.transform.position = transform.position;
                 arrowObj.transform.rotation = transform.rotation;
-                arrowObj.GetComponent<Arrow>().GoTarget(TargetForAttack, AttackRateTime);
-                arrowObj.SetActive(true);
+                arrowObj.DamageValue = Damage;
+                arrowObj.GoTarget(TargetForAttack, AttackRateTime);
+                arrowObj.gameObject.SetActive(true);
             }
             else
             {

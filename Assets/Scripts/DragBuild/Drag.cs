@@ -11,6 +11,11 @@ public class Drag : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (GameManager.Instance.GameState == GameState.ThereIsSomeAttack)
+        {
+            PopUpControl.Instance.OpenPopUp("wait until the end of the war");
+            return;
+        }
         DragManager.Instance.Build = CornerPos;
         DragManager.Instance.Entry = true;
         var inter = Parent.GetComponent<IProduct>();

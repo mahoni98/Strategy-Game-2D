@@ -21,20 +21,17 @@ public class GetProductInfo : SingletonManager<GetProductInfo>
 
 
     [Header("GameObjects")]
-    [SerializeField] private GameObject UnitArea;
+    [SerializeField] private GameObject UnitsArea;
     [SerializeField] private GameObject ProductArea;
-    [SerializeField] private GameObject UnityCreateButton;
+    [SerializeField] private Transform Content;
+
 
 
     [Header("Scripts")]
-    [SerializeField] private ClickToCreateUnit _ClickToCreateUnit;
-    [SerializeField] private Product Product;
+    [NonReorderable] private Product Product;
 
-    private void Start()
-    {
-        _ClickToCreateUnit = FindObjectOfType<ClickToCreateUnit>();
-        UnityCreateButton.GetComponent<Button>().onClick.AddListener(() => CreateUnit());
-    }
+
+   
 
     public void SetInfoToPanel(Product _Product)
     {
@@ -43,23 +40,9 @@ public class GetProductInfo : SingletonManager<GetProductInfo>
         NameText.text = Product.Name;
         InfoText.text = Product.ProductInfo;
         ProductImage.sprite = Product.ProductImage;
-        if (Product.CanProduce == false) { UnitArea.SetActive(false); return; }
-        UnitArea.SetActive(true);
-        UnitNameText.text = Product.UnitName;
-        UnitInfoText.text = Product.UnitInfo;
-        UnitImage.sprite = Product.UnitProducedImage;
-        PrepareButton();
+        if (Product.CanProduce == false) { UnitsArea.SetActive(false); return; }
+        UnitsArea.SetActive(true);
+        _Product.CreateUnitBtn(Product.transform, Content);
     }
-    public void PrepareButton()
-    {
-        if (Product.CanProduce)
-        {
-            UnityCreateButton.SetActive(true);
-        }
-    }
-
-    public void CreateUnit()
-    {
-        _ClickToCreateUnit.GetProductAtClick(Product.ProductType, Product.transform);
-    }
+   
 }

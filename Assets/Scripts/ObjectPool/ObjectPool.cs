@@ -4,33 +4,33 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    public GameObject prefab;
+    public Arrow prefab;
     public int size;
 
-    private List<GameObject> objectList;
+    private List<Arrow> objectList;
     public Transform BornTransform;
 
     private void Awake()
     {
-        objectList = new List<GameObject>();
+        objectList = new List<Arrow>();
 
         for (int i = 0; i < size; i++)
         {
-            GameObject obj = Instantiate(prefab, FindObjectOfType<Canvas>().transform);
+            Arrow obj = Instantiate(prefab, FindObjectOfType<Canvas>().transform);
             obj.transform.localPosition = BornTransform.localPosition;
             obj.transform.parent = BornTransform;
-            obj.SetActive(false);
+            obj.gameObject.SetActive(false);
             objectList.Add(obj);
         }
     }
 
-    public GameObject GetObject()
+    public Arrow GetObject()
     {
-        foreach (GameObject obj in objectList)
+        foreach (Arrow obj in objectList)
         {
-            if (!obj.activeInHierarchy)
+            if (!obj.gameObject.activeInHierarchy)
             {
-                obj.SetActive(true);
+                obj.gameObject.SetActive(true);
                 return obj;
             }
         }

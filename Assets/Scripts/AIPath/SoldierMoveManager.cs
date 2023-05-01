@@ -38,7 +38,7 @@ public class SoldierMoveManager : SingletonManager<SoldierMoveManager>
     }
     public void MoveForAttack(Transform TransforForAttack)
     {
-        if (PopUpControl.Instance.PlacemenentControl() == false) return;
+        //if (PopUpControl.Instance.PlacemenentControl() == false) return;
         Soldier SoldierBase = _CurrentSoldierAI.Soldier;
 
         if (SoldierSelected && SoldierBase.SoldierState != Soldier.State.Attack)
@@ -53,7 +53,7 @@ public class SoldierMoveManager : SingletonManager<SoldierMoveManager>
     }
     public void ChooseSoldier(AIControl Soldier)
     {
-        if (PopUpControl.Instance.PlacemenentControl() == false) return;
+        //if (PopUpControl.Instance.PlacemenentControl() == false) return;
         _CurrentSoldierAI = Soldier;
         SoldierSelected = true;
     }

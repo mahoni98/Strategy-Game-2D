@@ -10,4 +10,10 @@ public class MilitaryProduct : Product
 {
     [Header("Unit")]
     public int CurrentSoldierCapacity;
+
+
+
+
+
+
 }

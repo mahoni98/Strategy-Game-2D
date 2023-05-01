@@ -36,21 +36,29 @@ public class TriggerControl : MonoBehaviour, IPointerUpHandler, IPointerDownHand
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (CanPlace)
+        try
         {
-            GridElement Grid = collision.GetComponent<GridElement>();
-            if (Grid.ThereAreSomething == false || Grid.PlacedBuildName == BuildParent.name)
+            if (CanPlace)
             {
-                _DragColorControl.SetColor(DragColorControl.WhichColor.GreenOne);
-                CanPlace = true;
-            }
-            else
-            {
-                _DragColorControl.SetColor(DragColorControl.WhichColor.RedOne);
-                CanPlace = false;
-                FalseGridELement = Grid;
+                GridElement Grid = collision.GetComponent<GridElement>();
+                if (Grid != null && Grid.ThereAreSomething == false || Grid.PlacedBuildName == BuildParent.name)
+
+                {
+                    _DragColorControl.SetColor(DragColorControl.WhichColor.GreenOne);
+                    CanPlace = true;
+                }
+                else
+                {
+                    _DragColorControl.SetColor(DragColorControl.WhichColor.RedOne);
+                    CanPlace = false;
+                    FalseGridELement = Grid;
+                }
             }
         }
+        catch (System.Exception ex)
+        {
+        }
+        
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

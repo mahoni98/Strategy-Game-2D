@@ -8,10 +8,11 @@ public class ClickToCreate : MonoBehaviour
     public Transform _GridElement;
     public ConCreteFactoryBarrack _ConCreteFactoryBarrack;
     public ConCreteFactoryPowerPlant _ConCreteFactoryPowerPlant;
-    public ConCreteFactorySoldier _ConCreteFactorySoldier;
+    //public ConCreteFactorySoldier _ConCreteFactorySoldier;
 
     public void GetProductAtClick(Button Btn)
     {
+        if (PopUpControl.Instance.StateControl() == false) return;
         ProductUýItem.Type Type = Btn.GetComponent<ProductMenuBtn>()._ProductUýItem.WhichBuild;
         GameManager.Instance.UpdateState(GameState.BuildPlacement);
 

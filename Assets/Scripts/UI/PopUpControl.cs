@@ -38,7 +38,7 @@ public class PopUpControl : SingletonManager<PopUpControl>
     {
         Panel.SetActive(false);
     }
-    public bool PlacemenentControl()
+    public bool StateControl()
     {
         if (GameManager.Instance.GameState == GameState.RunGame)
         {
