@@ -13,15 +13,8 @@ public class Product : MonoBehaviour
     public Sprite ProductImage;
     public bool CanProduce;
 
-    public Type ProductType;
-    public enum Type
-    {
-        Barracks,
-        PowerPlant,
-    }
     [Header("Units")]
     public List<ConCreteFactorySoldier> UnitUýPrefabs;
-    //private Transform Content;
 
     public void CreateUnitBtn(Transform CreateUnitPos, Transform Content)
     {
@@ -48,11 +41,4 @@ public class Product : MonoBehaviour
 
         }
     }
-    //[Header("Units Base")]
-    //public string UnitName;
-    //public string UnitInfo;
-    //public Sprite UnitProducedImage;
-
-    //[Header("Units")]
-    //public Button Soldie
 }

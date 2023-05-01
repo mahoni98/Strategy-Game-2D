@@ -8,7 +8,8 @@ public class ClickToCreate : MonoBehaviour
     public Transform _GridElement;
     public ConCreteFactoryBarrack _ConCreteFactoryBarrack;
     public ConCreteFactoryPowerPlant _ConCreteFactoryPowerPlant;
-    //public ConCreteFactorySoldier _ConCreteFactorySoldier;
+    public ConCreteFactoryOtherBuilds _ConCreteFactoryOtherBuilds;
+
 
     public void GetProductAtClick(Button Btn)
     {
@@ -24,6 +25,10 @@ public class ClickToCreate : MonoBehaviour
             case ProductUýItem.Type.PowerPlant:
                 _ConCreteFactoryPowerPlant.GetProduct(_GridElement);
                 break;
+            case ProductUýItem.Type.OtherBuild:
+                _ConCreteFactoryOtherBuilds.GetProduct(_GridElement);
+                break;
+
             default:
                 break;
         }

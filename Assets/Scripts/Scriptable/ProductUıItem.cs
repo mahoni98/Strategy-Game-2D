@@ -12,6 +12,6 @@ public class ProductUýItem : ScriptableObject
     {
         Barracks,
         PowerPlant,
-        Soldier
+        OtherBuild
     }
 }
