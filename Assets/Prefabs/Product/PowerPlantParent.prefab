@@ -142,7 +142,6 @@ MonoBehaviour:
   ProductInfo: 'power plants to the energy point of the city '
   ProductImage: {fileID: 21300000, guid: db219c0d8de00df4d9f62f7125988b46, type: 3}
   CanProduce: 0
-  ProductType: 1
   "UnitU\u0131Prefabs": []
   EnergyCapacity: 0
   _Slider: {fileID: 7743588357234466752}
@@ -248,7 +247,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 226c1af3bf24d8b49a4ea062119523dc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db219c0d8de00df4d9f62f7125988b46, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

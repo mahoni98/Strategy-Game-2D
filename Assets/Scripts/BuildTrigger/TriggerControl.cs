@@ -29,7 +29,7 @@ public class TriggerControl : MonoBehaviour, IPointerUpHandler, IPointerDownHand
         GridElement Grid = collision.GetComponent<GridElement>();
         if (Grid.ThereAreSomething == false)
         {
-            collision.GetComponent<Image>().color = Color.black;
+            //collision.GetComponent<Image>().color = Color.black;
             Grid.EnterBuild(BuildParent.name);
             h.GridElemetListControl(GridElements, Grid);
         }
@@ -70,7 +70,7 @@ public class TriggerControl : MonoBehaviour, IPointerUpHandler, IPointerDownHand
                 if (Grid.ExitBuild(BuildParent.name))
                 {
                     //AnyTriggerBusyGrid = false;
-                    collision.GetComponent<Image>().color = Color.gray;
+                    //collision.GetComponent<Image>().color = Color.gray;
                     h.GridElemetListControl(GridElements, Grid);
                 }
             }
