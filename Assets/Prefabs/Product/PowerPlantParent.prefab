@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 272112396210524819}
   - component: {fileID: 272112396210524817}
   - component: {fileID: 272112396210524816}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: CornerTrigger (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,8 @@ GameObject:
   m_Component:
   - component: {fileID: 272112396258390330}
   - component: {fileID: 2086578789}
-  m_Layer: 5
+  - component: {fileID: 1442720971}
+  m_Layer: 6
   m_Name: PowerPlantParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,6 +146,32 @@ MonoBehaviour:
   "UnitU\u0131Prefabs": []
   EnergyCapacity: 0
   _Slider: {fileID: 7743588357234466752}
+--- !u!61 &1442720971
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272112396258390333}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -16, y: 32}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 64, y: 96}
+  m_EdgeRadius: 0
 --- !u!1 &272112396650481080
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +190,7 @@ GameObject:
   - component: {fileID: 272112396650481079}
   - component: {fileID: 272112396650481076}
   - component: {fileID: 272112396650481078}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Power Plant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
