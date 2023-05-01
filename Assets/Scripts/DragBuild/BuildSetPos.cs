@@ -9,14 +9,10 @@ public class BuildSetPos : SingletonManager<BuildSetPos>
     {
         if (DragManager.Instance.Entry)
         {
-            //Build.parent = null;
             BuildParent.DOMove(GridElement.position, 0.1f).OnComplete(() =>
             {
-                //Build.parent = BuildParent;
                 Build.DOLocalMove(new Vector3(OffsetX, OffsetY, 0), 0.1f);
-                //_TriggerControl.MarkGrid();
                 GameManager.Instance.UpdateState(GameState.RunGame);
-                //AstarPath.active.Scan();
             });
         }
     }

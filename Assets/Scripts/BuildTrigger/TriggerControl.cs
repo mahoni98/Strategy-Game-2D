@@ -90,6 +90,7 @@ public class TriggerControl : MonoBehaviour, IPointerUpHandler, IPointerDownHand
     {
         if (CanPlace)
         {
+            AstarPath.active.Scan();
             Placed = true;
             MarkGrid();
             GetComponent<Collider2D>().enabled = false;

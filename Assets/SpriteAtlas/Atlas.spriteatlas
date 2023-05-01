@@ -47,16 +47,22 @@ SpriteAtlas:
     - {fileID: 2800000, guid: db219c0d8de00df4d9f62f7125988b46, type: 3}
     - {fileID: 2800000, guid: 226c1af3bf24d8b49a4ea062119523dc, type: 3}
     - {fileID: 2800000, guid: 0cdfe1cdbb2588e4ab5bda577e822e28, type: 3}
+    - {fileID: 2800000, guid: 3c61d7d749c3f034b9d28e5d038beb19, type: 3}
+    - {fileID: 2800000, guid: 4772cb7cc074e3644b04ca5488e0cac1, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 226c1af3bf24d8b49a4ea062119523dc, type: 3}
+  - {fileID: 21300000, guid: 3c61d7d749c3f034b9d28e5d038beb19, type: 3}
+  - {fileID: 21300000, guid: 4772cb7cc074e3644b04ca5488e0cac1, type: 3}
   - {fileID: 21300000, guid: db219c0d8de00df4d9f62f7125988b46, type: 3}
   - {fileID: 21300000, guid: 0cdfe1cdbb2588e4ab5bda577e822e28, type: 3}
   m_PackedSpriteNamesToIndex:
   - Barrack
+  - Soldier3
+  - Soldier2
   - PowerPlant
   - Soldier
   m_RenderDataMap: {}
